@@ -8,6 +8,7 @@
 #include <ev++.h>
 #include <sys/socket.h>
 #include <unistd.h>
+#include <cstring>
 
 #include "util.h"
 #include "responser.h"
