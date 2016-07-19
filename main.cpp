@@ -9,7 +9,7 @@ int main(int argc, char** argv)
 {
     int r, port = 0;
     std::string ip;
-    std::string* dir;
+    std::string dir;
     while((r = getopt(argc, argv, "h:p:d:")) != -1)
            switch (r)
            {
@@ -20,7 +20,7 @@ int main(int argc, char** argv)
                    port = atoi(optarg);
                    break;
                case 'd':
-                   dir = new std::string(optarg);
+                   dir = optarg;
                    break;
                default:
                {
@@ -28,15 +28,17 @@ int main(int argc, char** argv)
                    return 2;
                }
            }
-    if (ip.empty() || port == 0 || dir->empty())
+    if (ip.empty() || port == 0 || dir.empty())
     {
         std::cerr << "Wrong argument" << std::endl;
         return 2;
     }
 
-    chroot(dir->c_str());
-    chdir(dir->c_str());
-    delete dir;
+
+
+    daemon(0,0);
+    chroot(dir.c_str());
+    chdir(dir.c_str());
     try
     {
         server::run(ip, port);

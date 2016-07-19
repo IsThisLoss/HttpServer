@@ -1,4 +1,4 @@
-#include <iostream>
+//#include <iostream>
 #include "server.h"
 
 acceptor* server::a = nullptr;
@@ -38,7 +38,7 @@ void server::create_helper()
         {
             server::am_i_acceptor = false;
             ev::dynamic_loop loop;
-            std::cout << getpid() << std::endl;
+            //std::cout << getpid() << std::endl;
             server::h = new helper(loop, fd[0]);
             loop.run(0);
         }
@@ -57,13 +57,13 @@ void server::terminate(int, siginfo_t*, void*)
         for (auto& i : server::children)
         {
             kill(i.first, SIGTERM);
-            std::cerr << i.first << std::endl;
+            //std::cerr << i.first << std::endl;
         }
         delete server::a;
     }
     else
     {
-        std::cerr << "+\n";
+        //std::cerr << "+\n";
         delete server::h;
     }
 }
