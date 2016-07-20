@@ -1,4 +1,5 @@
 #include "responser.h"
+#include <iostream>
 
 responser::responser()
 {
@@ -18,7 +19,12 @@ std::string responser::get_response(const std::string& request)
     std::ifstream fin;
     std::smatch match;
     std::regex_search(request, match, std::regex("GET (.+) "));
-    std::string req_file = "." + match.str(1);
+    std::string req_file = match.str(1);
+    int l = req_file.find('?');
+    if (l != std::string::npos)
+        req_file = req_file.substr(0, l);
+    req_file = "." + req_file;
+    std::cout << req_file << std::endl;
     fin.open(req_file, std::ios::in | std::ios::binary);
     if (fin.is_open())
     {
@@ -57,6 +63,8 @@ std::string responser::get_head(int code, const std::string& request, const unsi
     head << "Content-Length: " << content_length << "\r\n";
     if (std::regex_search(request, std::regex("keep-alive")))
         head << "Connection: keep-alive\r\n";
+    else
+        head << "Connection: close\r\n";
     head << "\r\n";
     return head.str();
 }
