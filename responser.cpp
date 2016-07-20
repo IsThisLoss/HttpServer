@@ -51,12 +51,12 @@ std::string responser::get_head(int code, const std::string& request, const unsi
         head << " OK\r\n";
         head << "Server: HttpServer_for_stepic_exam\r\n";
         head << "Content-Type: ";
-        if (std::regex_search(request, std::regex("GET.+\\.html")))
+        //if (std::regex_search(request, std::regex("GET.+\\.html")))
             head << "text/html; charset=utf-8\r\n";
-        else if (std::regex_search(request, std::regex("GET.+\\.jpg")))
+        /*else if (std::regex_search(request, std::regex("GET.+\\.jpg")))
             head << "image/jpeg\r\n";
         else if (std::regex_search(request, std::regex("GET.+\\.css")))
-            head << "text/css";
+            head << "text/css";*/
     }
     else if (code == 404)
     {
