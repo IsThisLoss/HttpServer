@@ -36,7 +36,7 @@ int main(int argc, char** argv)
 
 
 
-    //daemon(1,0);
+    daemon(1,0);
     chdir(dir.c_str());
     chroot(dir.c_str());
     try
