@@ -19,7 +19,7 @@ void server::run(const std::string& ip, const int& port)
     ev::dynamic_loop loop;
     a = new acceptor(loop, ip, port);
     server::am_i_acceptor = true;
-    for (int i(0); i < 4 && am_i_acceptor; i++)
+    for (int i(0); i < 16 && am_i_acceptor; i++)
         server::create_helper();
     if(server::am_i_acceptor)
         loop.run(0);
