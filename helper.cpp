@@ -1,4 +1,3 @@
-#include <iostream>
 #include "helper.h"
 
 helper::helper(ev::dynamic_loop& _loop, int fd) : loop(_loop)
@@ -41,7 +40,7 @@ void helper::read_from_client(ev::io& watcher, int)
         if (it != watchers.end())
         {
             watchers.erase(it);
-            std::cout << "+" << std::endl;
+            //std::cout << "+" << std::endl;
         }
         ev::io* w = &watcher;
         delete w;

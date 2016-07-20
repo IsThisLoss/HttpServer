@@ -32,6 +32,7 @@ void acceptor::new_connection(ev::io& watcher, int)
         });
         sock_fd_write(it->first, (void*)"1", 2, new_client);
         it->second++;
+        close(new_client);
     }
 }
 
