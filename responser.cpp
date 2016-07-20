@@ -38,25 +38,34 @@ std::string responser::get_response(const std::string& request)
         return get_head(200, request, body.size()) + body;
     }
     else
-        return get_head(404, request, not_found.length()) + not_found;
+        return get_head(404, request, not_found.length()); //+ not_found;
 }
 
 std::string responser::get_head(int code, const std::string& request, const unsigned long& content_length)
 {
     std::stringstream head;
-    head << "HTTP/1.0 " << code;
+
+    //head << "HTTP/1.0 " << code;
 
     if (code == 200)
+    {
+        head << "HTTP/1.0 200 OK\r\n\r\n";
+    }
+    else if (code == 404)
+    {
+        head << "HTTP/1.0 404 Not Found\r\nContent-Length: 0\r\nContent-Type: text/html\r\n\r\n";
+    }
+    /*if (code == 200)
     {
         head << " OK\r\n";
         head << "Server: HttpServer_for_stepic_exam\r\n";
         head << "Content-Type: ";
-        //if (std::regex_search(request, std::regex("GET.+\\.html")))
+        if (std::regex_search(request, std::regex("GET.+\\.html")))
             head << "text/html; charset=utf-8\r\n";
-        /*else if (std::regex_search(request, std::regex("GET.+\\.jpg")))
+        else if (std::regex_search(request, std::regex("GET.+\\.jpg")))
             head << "image/jpeg\r\n";
         else if (std::regex_search(request, std::regex("GET.+\\.css")))
-            head << "text/css";*/
+            head << "text/css";
     }
     else if (code == 404)
     {
@@ -64,10 +73,10 @@ std::string responser::get_head(int code, const std::string& request, const unsi
         head << "Content-Type: text/html; charset=utf-8\r\n";
     }
     head << "Content-Length: " << content_length << "\r\n";
-//    if (std::regex_search(request, std::regex("keep-alive")))
-//        head << "Connection: keep-alive\r\n";
-//    else
+    if (std::regex_search(request, std::regex("keep-alive")))
+        head << "Connection: keep-alive\r\n";
+    else
         head << "Connection: close\r\n";
-    head << "\r\n";
+    head << "\r\n";*/
     return head.str();
 }
