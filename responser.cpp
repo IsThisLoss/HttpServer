@@ -16,12 +16,9 @@ responser::responser()
 std::string responser::get_response(const std::string& request)
 {
     std::ifstream fin;
-    std::ofstream off("./log.log");
-    off << "---------" << request << std::endl;
-    off.close();
     //std::smatch match;
     //std::regex_search(request, match, std::regex("GET (.+) ")); JUST BECAUSE STEPIC'S G++ TOOOOOOOOOOO OOOOLD
-    int b = request.find(" ");
+    int b = request.find("/");
     b++;
     int e = request.find(" ", b);
     std::string req_file;
@@ -30,7 +27,6 @@ std::string responser::get_response(const std::string& request)
     int l = req_file.find('?');
     if (l != std::string::npos)
         req_file = req_file.substr(0, l);
-    req_file = "." + req_file;
     fin.open(req_file, std::ios::in | std::ios::binary);
     if (fin.is_open())
     {
