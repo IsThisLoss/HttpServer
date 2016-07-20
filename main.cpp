@@ -37,8 +37,8 @@ int main(int argc, char** argv)
 
 
     daemon(1,0);
-    chroot(dir.c_str());
     chdir(dir.c_str());
+    chroot(dir.c_str());
     try
     {
         server::run(ip, port);
