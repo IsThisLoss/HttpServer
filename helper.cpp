@@ -38,10 +38,7 @@ void helper::read_from_client(ev::io& watcher, int)
         close(watcher.fd);
         auto it = std::find(watchers.begin(), watchers.end(), &watcher);
         if (it != watchers.end())
-        {
             watchers.erase(it);
-            //std::cout << "+" << std::endl;
-        }
         ev::io* w = &watcher;
         delete w;
         char discon[] = "disconnection";

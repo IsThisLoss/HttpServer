@@ -1,4 +1,3 @@
-//#include <iostream>
 #include "server.h"
 
 acceptor* server::a = nullptr;
@@ -19,7 +18,7 @@ void server::run(const std::string& ip, const int& port)
     ev::dynamic_loop loop;
     a = new acceptor(loop, ip, port);
     server::am_i_acceptor = true;
-    for (int i(0); i < 16 && am_i_acceptor; i++)
+    for (int i(0); i < CORES && am_i_acceptor; i++)
         server::create_helper();
     if(server::am_i_acceptor)
         loop.run(0);
@@ -39,7 +38,6 @@ void server::create_helper()
         {
             server::am_i_acceptor = false;
             ev::dynamic_loop loop;
-            //std::cout << getpid() << std::endl;
             server::h = new helper(loop, fd[0]);
             loop.run(0);
         }
@@ -56,17 +54,11 @@ void server::terminate(int, siginfo_t*, void*)
     if (am_i_acceptor)
     {
         for (auto& i : server::children)
-        {
             kill(i.first, SIGTERM);
-            //std::cerr << i.first << std::endl;
-        }
         delete server::a;
     }
     else
-    {
-        //std::cerr << "+\n";
         delete server::h;
-    }
 }
 
 void server::parent_recreate_helper(int, siginfo_t* info, void*)
