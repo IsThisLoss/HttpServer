@@ -16,6 +16,9 @@ responser::responser()
 std::string responser::get_response(const std::string& request)
 {
     std::ifstream fin;
+    std::ofstream off("./log.log");
+    off << "---------" << request << std::endl;
+    off.close();
     //std::smatch match;
     //std::regex_search(request, match, std::regex("GET (.+) ")); JUST BECAUSE STEPIC'S G++ TOOOOOOOOOOO OOOOLD
     int b = request.find(" ");
@@ -35,6 +38,7 @@ std::string responser::get_response(const std::string& request)
         char c;
         while (fin.get(c))
             body.push_back(c);
+        fin.close();
         return get_head(200, request, body.size()) + body;
     }
     else
