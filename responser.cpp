@@ -53,7 +53,7 @@ std::string responser::get_head(int code, const std::string& request, const unsi
 
     if (code == 200)
     {
-        head << "HTTP/1.0 200 OK\r\n\r\n";
+        head << "HTTP/1.0 200 OK\r\n << Content-Length: " << content_length << "\r\n\r\n";
     }
     else if (code == 404)
     {
