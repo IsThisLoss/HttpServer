@@ -21,7 +21,7 @@ private:
     /* some sort of singleton */
     server() {}
     ~server() {}
-    /* pointers due to free memory */
+    /* pointers to free memory */
     static acceptor* a;
     static helper* h;
     static std::map<pid_t, int> children;
