@@ -12,22 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1bed6644-1e9c-490a-80e2-2bf02f1b6319" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acceptor.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acceptor.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/responser.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/responser.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server.h" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/helper.cpp" afterPath="$PROJECT_DIR$/Helper.cpp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/helper.h" afterPath="$PROJECT_DIR$/Helper.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/HttpServer.iml" afterPath="$PROJECT_DIR$/.idea/HttpServer.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.cpp" afterPath="$PROJECT_DIR$/main.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util.cpp" afterPath="$PROJECT_DIR$/util.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util.h" afterPath="$PROJECT_DIR$/util.h" />
     </list>
     <ignored path="HttpServer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -409,12 +394,20 @@
       <workItem from="1477589127123" duration="2443000" />
       <workItem from="1478632110116" duration="27000" />
       <workItem from="1479191442113" duration="28000" />
-      <workItem from="1485021065906" duration="6676000" />
+      <workItem from="1485021065906" duration="6847000" />
     </task>
+    <task id="LOCAL-00001" summary="Huge refactoring has been done">
+      <created>1485027835829</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1485027835829</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9174000" />
+    <option name="totallyTimeSpent" value="9345000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
@@ -453,6 +446,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Huge refactoring has been done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Huge refactoring has been done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
