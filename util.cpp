@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "util.h"
 
 ssize_t sock_fd_write(int sock, void* buff, ssize_t bufflen, int fd)
@@ -34,7 +35,7 @@ ssize_t sock_fd_write(int sock, void* buff, ssize_t bufflen, int fd)
     }
     size = sendmsg(sock, &msg, 0);
     if (size < 0)
-        throw "Passing fd: Error: write";
+        throw std::runtime_error("Passing fd: Error: write " + errno);
     return size;
 }
 
@@ -61,14 +62,14 @@ ssize_t sock_fd_read(int sock, void* buff, ssize_t bufflen, int* fd)
         msg.msg_controllen = sizeof(cmsgu.constrol);
         size = recvmsg(sock, &msg, 0);
         if (size < 0)
-            throw "Passing fd: Error: read";
+            throw std::runtime_error("Passing fd: Error: read");
         cmsg = CMSG_FIRSTHDR(&msg);
         if (cmsg && cmsg->cmsg_len == CMSG_LEN(sizeof(int)))
         {
             if (cmsg->cmsg_level != SOL_SOCKET)
-                throw "Passing fd: Error: read: invalid cmsg_level";
+                throw std::runtime_error("Passing fd: Error: read: invalid cmsg_level");
             if (cmsg->cmsg_type != SCM_RIGHTS)
-                throw "Passing fd: Error: read: invalid cmsg_type";
+                throw std::runtime_error("Passing fd: Error: read: invalid cmsg_type");
             *fd = *((int *) CMSG_DATA(cmsg));
         }
         else
@@ -78,7 +79,7 @@ ssize_t sock_fd_read(int sock, void* buff, ssize_t bufflen, int* fd)
     {
         size = read(sock, buff, bufflen);
         if (size < 0)
-            throw "Passing fd: Error: read";
+            throw std::runtime_error("Passing fd: Error: read");
     }
     return size;
 }
