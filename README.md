@@ -6,7 +6,7 @@
 </p>
 <h4>Main idea</h4>
 <p>
-  There is main process, which starts one process to listen new incoming connections and predefined number of 
-  worker-processes. When listen-process get new connection, it passes file descriptor to the least busy worker and further 
-  only this process work with that connection. Also, as soon as any worker process died, the main process creates new one.  
+  There is the main process, which starts one process to listen new incoming connections and predefined number of 
+  worker-processes. When the listen-process get new connection, it passes file descriptor to the least busy worker and further 
+  only this process works with that connection. Also, as soon as any worker process died, the main process creates new one.  
 </p>
